@@ -92,8 +92,8 @@ export class MondayClient {
     if (columns.agent_email && transaction.agent_email) {
       values[columns.agent_email] = { email: transaction.agent_email, text: transaction.agent_email }
     }
-    if (columns.contract_date && transaction.contract_date) {
-      values[columns.contract_date] = { date: transaction.contract_date }
+    if (columns.contract_date && transaction.acceptance_date) {
+      values[columns.contract_date] = { date: transaction.acceptance_date }
     }
     if (columns.close_date && transaction.close_date) {
       values[columns.close_date] = { date: transaction.close_date }

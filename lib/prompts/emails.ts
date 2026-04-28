@@ -12,7 +12,7 @@ Transaction Details:
 - Client: ${transaction.client_name ?? 'Unknown'}
 - Property: ${transaction.property_address ?? 'Unknown'}
 - Agent: ${transaction.agent_name ?? 'Unknown'}
-- Contract Date: ${transaction.contract_date ?? 'Unknown'}
+- Acceptance Date: ${transaction.acceptance_date ?? 'Unknown'}
 - Close Date: ${transaction.close_date ?? 'Unknown'}
 - Purchase Price: ${transaction.purchase_price ? `$${transaction.purchase_price.toLocaleString()}` : 'Unknown'}
 - MLS #: ${transaction.mls_number ?? 'N/A'}
