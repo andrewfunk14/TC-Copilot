@@ -76,9 +76,8 @@ export const TransactionExtraction = z.object({
   water_shares_rights:         z.string().nullable(),
   notes_content:               z.string().nullable(),
 
-  // Meta
+  // Meta — transaction_type is selected manually by TC, not extracted
   kw_side:              z.enum(['buyer', 'seller']).nullable(),
-  transaction_type:     z.enum(['residential', 'land']).nullable(),
   team_detection: z.object({
     team:             z.enum(['CHR', 'KW_UTAH', 'KW_IDAHO']).nullable(),
     confidence:       z.enum(['high', 'medium', 'low']).nullable(),

@@ -22,6 +22,15 @@ export async function POST(req: Request) {
   }
 
   const data = parsed.data
+
+  const dateFields = [
+    'offer_reference_date', 'acceptance_date',
+    'seller_disclosure_date', 'due_diligence_date', 'financing_date', 'close_date',
+  ] as const
+  for (const f of dateFields) {
+    if (data[f] === '') (data as Record<string, unknown>)[f] = null
+  }
+
   const short_address = data.short_address ?? deriveShortAddress(data.property_address)
 
   const { data: row, error } = await supabaseAdmin

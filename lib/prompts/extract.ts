@@ -3,7 +3,7 @@ export function buildExtractionUserPrompt(chrAgentNames: string[]): string {
     ? `Known CHR agents: ${chrAgentNames.join(', ')}`
     : 'No CHR agent list provided.'
 
-  return `Extract all transaction details from this real estate info sheet PDF.
+  return `Extract all transaction details from this real estate info sheet PDF and return them as a single raw JSON object. No markdown fences, no explanation — JSON only.
 
 ${agentList}
 
@@ -58,5 +58,24 @@ Mark a field in uncertain_fields if:
 For dates, use YYYY-MM-DD format. Short dates like "11-8-25" → "2025-11-08".
 For numeric fields, return as a number (no dollar signs, commas, or % symbols).
 For seller_name, if multiple seller names are listed join them with " & " (e.g. "Tyler Godfrey & Katie Godfrey").
-Return null for any field that cannot be determined from the document.`
+Return null for any field that cannot be determined from the document.
+
+Your response must be a single JSON object with exactly these keys:
+client_name, client_phone, client_email,
+property_address, mls_number,
+purchase_price, earnest_money, construction_deposit, concessions,
+offer_reference_date, acceptance_date,
+seller_disclosure_date, due_diligence_date, financing_date, close_date,
+sac_percent, bac_percent, net_or_gross, transaction_fee,
+home_warranty, home_warranty_paid_by, home_warranty_amount,
+seller_name, seller_phone, seller_email,
+agent_name, agent_company, agent_phone, agent_email, agent_office_address, tc_name,
+sellers_agent_name, sellers_agent_company, sellers_agent_phone, sellers_agent_email,
+title_company, title_officer_name, title_officer_phone, title_officer_email,
+seller_title_company, seller_title_officer_name, seller_title_officer_phone, seller_title_officer_email,
+lender_company, lender_name, lender_phone, lender_email,
+water_shares_rights, notes_content,
+kw_side,
+team_detection: { team, confidence, detection_source, uncertain },
+uncertain_fields: []`
 }

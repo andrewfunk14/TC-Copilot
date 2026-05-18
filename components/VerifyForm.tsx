@@ -15,7 +15,7 @@ export default function VerifyForm({ extraction }: VerifyFormProps) {
   const [form, setForm] = useState({
     team:                       extraction.team_detection.team ?? '',
     kw_side:                    extraction.kw_side ?? 'buyer',
-    transaction_type:           extraction.transaction_type ?? 'residential',
+    transaction_type:           'residential',
 
     // Buyer / client
     client_name:                extraction.client_name ?? '',
@@ -161,7 +161,7 @@ export default function VerifyForm({ extraction }: VerifyFormProps) {
           <select
             value={form.team}
             onChange={e => set('team', e.target.value)}
-            className={`w-full border rounded-lg px-3 py-2 text-sm ${!form.team ? 'border-red-400' : 'border-gray-300'}`}
+            className={`w-full border rounded-lg px-3 py-2 text-sm text-gray-900 bg-white ${!form.team ? 'border-red-400' : 'border-gray-300'}`}
           >
             <option value="">-- Select team --</option>
             <option value="CHR">CHR</option>
@@ -331,7 +331,7 @@ export default function VerifyForm({ extraction }: VerifyFormProps) {
             type="text"
             value={form.water_shares_rights}
             onChange={e => set('water_shares_rights', e.target.value)}
-            className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm bg-white"
+            className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 bg-white"
           />
         </div>
         <div>
@@ -340,7 +340,7 @@ export default function VerifyForm({ extraction }: VerifyFormProps) {
             value={form.notes}
             onChange={e => set('notes', e.target.value)}
             rows={3}
-            className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm resize-none"
+            className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-900 bg-white resize-none"
           />
         </div>
       </section>
@@ -386,7 +386,7 @@ function Field({ label, name, value, onChange, uncertain, fieldClass, type = 'te
         value={value}
         onChange={e => onChange(name, e.target.value)}
         placeholder={value === '' && label.includes('*') ? 'Not found — enter manually' : ''}
-        className={`w-full border rounded-lg px-3 py-2 text-sm ${fieldClass}`}
+        className={`w-full border rounded-lg px-3 py-2 text-sm text-gray-900 ${fieldClass}`}
       />
     </div>
   )
